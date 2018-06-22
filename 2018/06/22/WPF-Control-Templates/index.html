@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="learn everyday," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="控件模板理解逻辑树和可视化树通过可视化树可以完成一下两项非常有用的工作  可使用样式改变可视化树中的元素 可为控件创建新模板  LogicalTreeHelper：  FindLogicalNode() BringIntoView() GetParent() GetChildren()  VisualTreeHelper:  GetChildrenCount() GetChild() GetPar">
+<meta name="keywords" content="learn everyday">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPF-Control Templates">
+<meta property="og:url" content="http://yoursite.com/2018/06/22/WPF-Control-Templates/index.html">
+<meta property="og:site_name" content="Psmyfish">
+<meta property="og:description" content="控件模板理解逻辑树和可视化树通过可视化树可以完成一下两项非常有用的工作  可使用样式改变可视化树中的元素 可为控件创建新模板  LogicalTreeHelper：  FindLogicalNode() BringIntoView() GetParent() GetChildren()  VisualTreeHelper:  GetChildrenCount() GetChild() GetPar">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-22T03:52:09.677Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WPF-Control Templates">
+<meta name="twitter:description" content="控件模板理解逻辑树和可视化树通过可视化树可以完成一下两项非常有用的工作  可使用样式改变可视化树中的元素 可为控件创建新模板  LogicalTreeHelper：  FindLogicalNode() BringIntoView() GetParent() GetChildren()  VisualTreeHelper:  GetChildrenCount() GetChild() GetPar">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/22/WPF-Control-Templates/"/>
+
+
+
+
+
+  <title>WPF-Control Templates | Psmyfish</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Psmyfish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">what is this fish?</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/WPF-Control-Templates/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Psmyfish">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Psmyfish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WPF-Control Templates</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T09:58:05+08:00">
+                2018-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="控件模板"><a href="#控件模板" class="headerlink" title="控件模板"></a>控件模板</h1><h2 id="理解逻辑树和可视化树"><a href="#理解逻辑树和可视化树" class="headerlink" title="理解逻辑树和可视化树"></a>理解逻辑树和可视化树</h2><p>通过可视化树可以完成一下两项非常有用的工作</p>
+<ul>
+<li>可使用样式改变可视化树中的元素</li>
+<li>可为控件创建新模板</li>
+</ul>
+<p>LogicalTreeHelper：</p>
+<ul>
+<li>FindLogicalNode()</li>
+<li>BringIntoView()</li>
+<li>GetParent()</li>
+<li>GetChildren()</li>
+</ul>
+<p>VisualTreeHelper:</p>
+<ul>
+<li>GetChildrenCount()</li>
+<li>GetChild()</li>
+<li>GetParent()</li>
+</ul>
+<p>Note:可以使用Snoop 深入研究其他应用程序的可视化树。snoopwpf.codeplex.com</p>
+<p>简单的递归VisualTree窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public partial class VisualTreeDisplay : System.Windows.Window</span><br><span class="line">   &#123;</span><br><span class="line"></span><br><span class="line">       public VisualTreeDisplay()</span><br><span class="line">       &#123;</span><br><span class="line">           InitializeComponent();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public void ShowVisualTree(DependencyObject element)</span><br><span class="line">       &#123;</span><br><span class="line">           // Clear the tree.</span><br><span class="line">           treeElements.Items.Clear();</span><br><span class="line"></span><br><span class="line">           // Start processing elements, begin at the root.</span><br><span class="line">           ProcessElement(element, null);            </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       private void ProcessElement(DependencyObject element, TreeViewItem previousItem)</span><br><span class="line">       &#123;</span><br><span class="line">           // Create a TreeViewItem for the current element.</span><br><span class="line">           TreeViewItem item = new TreeViewItem();</span><br><span class="line">           item.Header = element.GetType().Name;</span><br><span class="line">           item.IsExpanded = true;</span><br><span class="line"></span><br><span class="line">           // Check whether this item should be added to the root of the tree</span><br><span class="line">           //(if it&apos;s the first item), or nested under another item.</span><br><span class="line">           if (previousItem == null)</span><br><span class="line">           &#123;</span><br><span class="line">               treeElements.Items.Add(item);</span><br><span class="line">           &#125;</span><br><span class="line">           else</span><br><span class="line">           &#123;</span><br><span class="line">               previousItem.Items.Add(item);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           // Check if this element contains other elements.</span><br><span class="line">           for (int i = 0; i &lt; VisualTreeHelper.GetChildrenCount(element); i++)</span><br><span class="line">           &#123;</span><br><span class="line">               // Process each contained element recursively.</span><br><span class="line">               ProcessElement(VisualTreeHelper.GetChild(element, i), item);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;       </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>对当前元素，添加它的子元素的对象，然后递归子元素及子元素的子元素的对象。</p>
+<p>然后可以用其他窗口显示此树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VisualTreeDisplay treeDisplay = new VisualTreeDisplay();</span><br><span class="line">treeDisplay.ShowVisualTree(this);</span><br><span class="line">treeDisplay.Show();</span><br></pre></td></tr></table></figure>
+<h2 id="理解模板"><a href="#理解模板" class="headerlink" title="理解模板"></a>理解模板</h2><p>每个控件都有一个内置的方法，用于确定如何渲染控件。改方法称为控件模板，是用XAML标记块定义的。</p>
+<p>Button类的模板简化版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ControlTemplate ... &gt;</span><br><span class="line">	&lt;mwt:ButtonChrome Name=&quot;Chrome&quot; ...&gt;</span><br><span class="line">    	&lt;ContentPresenter Content=&quot;&#123;TemplateBinding ContentControl.Content&#125;&quot; .../&gt;</span><br><span class="line">    &lt;/mwt:ButtonChrome&gt;</span><br><span class="line">    &lt;ControlTemplate.Triggers&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;/ControlTemplate.Triggers&gt;</span><br><span class="line">&lt;/ControlTemplate&gt;</span><br></pre></td></tr></table></figure>
+<p>如果希望构建全新按钮，只需要创建新的模板控件。</p>
+<p>Note：ButtonChrome类也是继承自Decorator类，和Border类似，是为了添加图形装饰使用。</p>
+<p>按钮获得焦点/被单击以及被禁用时，触发器控制按钮如何进行变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;Trigger Property=&quot;UIElement.IsKeyboardFocused&quot;&gt;</span><br><span class="line">	&lt;Setter Property=&quot;mwt:ButtonChrome.RenderDefaulted&quot; TargetName=&quot;Chrome&quot;&gt;</span><br><span class="line">    	&lt;Setter.Value&gt;</span><br><span class="line">        	&lt;s:Boolen&gt;True&lt;/s:Boolen&gt;</span><br><span class="line">        &lt;/Setter.Value&gt;</span><br><span class="line">    &lt;/Setter&gt;</span><br><span class="line">    &lt;Trigger.Value&gt;</span><br><span class="line">    	&lt;s:Boolean&gt;True&lt;/s:Boolean&gt;</span><br><span class="line">    &lt;/Trigger.Value&gt;</span><br><span class="line">&lt;/Trigger&gt;</span><br><span class="line"></span><br><span class="line">&lt;Trigger Property=&quot;ToggleButton.IsChecked&quot;&gt;</span><br><span class="line">	&lt;Setter Property=&quot;mwt:ButtonChrome.RenderPressed&quot; TargetName=&quot;Chrome&quot;&gt;</span><br><span class="line">    	&lt;Setter.Value&gt;</span><br><span class="line">        	&lt;s:Boolean&gt;True&lt;/s:Boolean&gt;</span><br><span class="line">        &lt;/Setter.Value&gt;</span><br><span class="line">    &lt;/Setter&gt;</span><br><span class="line">    &lt;Trigger.Value&gt;</span><br><span class="line">    	&lt;s:Boolean&gt;True&lt;/s:Boolean&gt;</span><br><span class="line">    &lt;/Trigger.Value&gt;</span><br><span class="line">&lt;/Trigger&gt;</span><br></pre></td></tr></table></figure>
+<p>触发器未必需要使用TargetName属性。如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Trigger Property =&quot;UIElement.IsEnabled&quot;&gt;</span><br><span class="line">	&lt;Setter Property=&quot;TextElement.Foreground&quot;&gt;</span><br><span class="line">    	&lt;Setter.Value&gt;</span><br><span class="line">        	&lt;SolidColorBrush&gt;#FFADADAD&lt;/SolidColorBrush&gt;</span><br><span class="line">        &lt;/Setter.Value&gt;</span><br><span class="line">    &lt;/Setter&gt;</span><br><span class="line">    &lt;Trigger.Value&gt;</span><br><span class="line">    	&lt;s:Boolean&gt;False&lt;/s:Boolean&gt;</span><br><span class="line">    &lt;/Trigger.Value&gt;</span><br><span class="line">&lt;/Trigger&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>模板类型</strong></p>
+<p>模板有三种类型，都继承自FrameworkTemplate基类。</p>
+<ul>
+<li>ControlTemplate</li>
+<li>DataTemplate</li>
+<li>HierarchicalDatatemplate</li>
+<li>ItemsControl</li>
+</ul>
+<h3 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h3><p>ButtonChrome类，定于于Microsoft.Windows.Themes.  其中还包括BulletChrome/ScrollChrome,ListBoxChrome,SystemDropShadowChrome.</p>
+<p>稍高级别上System.Windows.Controls.Primitives命名空间中包含大量可独立使用的元素。这些元素包括ScrollBar, ResizeGrip, Thumb, TickBar等。</p>
+<p>ResizeGrip 例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;ControlTemplate TargetType=&quot;&#123;x:Type ResizeGrip&#125;&quot;&gt;</span><br><span class="line">            &lt;Grid Background=&quot;&#123;TemplateBinding Background&#125;&quot; SnapsToDevicePixels=&quot;True&quot;&gt;</span><br><span class="line">                &lt;Path Margin=&quot;0,0,2,2&quot; Data=&quot;M9,0L11,0 11,11 0,11 0,9 3,9 3,6 6,6 6,3 9,3z&quot;</span><br><span class="line">                      HorizontalAlignment=&quot;Right&quot; VerticalAlignment=&quot;Bottom&quot;&gt;</span><br><span class="line">                    &lt;Path.Fill&gt;</span><br><span class="line">                        &lt;DrawingBrush ViewboxUnits=&quot;Absolute&quot; TileMode=&quot;Tile&quot; Viewbox=&quot;0,0,3,3&quot;</span><br><span class="line">                                      Viewport=&quot;0,0,3,3&quot; ViewportUnits=&quot;Absolute&quot;&gt;</span><br><span class="line">                            &lt;DrawingBrush.Drawing&gt;</span><br><span class="line">                                &lt;DrawingGroup&gt;</span><br><span class="line">                                    &lt;DrawingGroup.Children&gt;</span><br><span class="line">                                        &lt;GeometryDrawing Geometry=&quot;M0,0L2,0 2,2 0,2z&quot;&gt;</span><br><span class="line">                                            &lt;GeometryDrawing.Brush&gt;</span><br><span class="line">                                                &lt;LinearGradientBrush EndPoint=&quot;1,0.75&quot; StartPoint=&quot;0,0.25&quot;&gt;</span><br><span class="line">                                                    &lt;LinearGradientBrush.GradientStops&gt;</span><br><span class="line">                                                        &lt;GradientStop Offset=&quot;0.3&quot; Color=&quot;#FFFFFFFF&quot;/&gt;</span><br><span class="line">                                                        &lt;GradientStop Offset=&quot;0.75&quot; Color=&quot;#FFBBC5D7&quot;/&gt;</span><br><span class="line">                                                        &lt;GradientStop Offset=&quot;1&quot;    Color=&quot;#FF6D83A9&quot;/&gt;</span><br><span class="line">                                                    &lt;/LinearGradientBrush.GradientStops&gt;</span><br><span class="line">                                                &lt;/LinearGradientBrush&gt;</span><br><span class="line">                                            &lt;/GeometryDrawing.Brush&gt;</span><br><span class="line">                                        &lt;/GeometryDrawing&gt;</span><br><span class="line">                                    &lt;/DrawingGroup.Children&gt;</span><br><span class="line">                                &lt;/DrawingGroup&gt;</span><br><span class="line">                            &lt;/DrawingBrush.Drawing&gt;</span><br><span class="line">                        &lt;/DrawingBrush&gt;</span><br><span class="line">                    &lt;/Path.Fill&gt;</span><br><span class="line">                &lt;/Path&gt;</span><br><span class="line">            &lt;/Grid&gt;</span><br><span class="line">        &lt;/ControlTemplate&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="剖析控件"><a href="#剖析控件" class="headerlink" title="剖析控件"></a>剖析控件</h3><p>可以通过编程获取所需的信息。基本思想是从Template属性中获取控件的模板，然后使用XamlWriter类，将该模板串行化到XAML文件中。</p>
+<p>要构建这么一个程序的诀窍是使用反射(reflection)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">public partial class MainWindow : Window</span><br><span class="line">    &#123;</span><br><span class="line">        public MainWindow()</span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line">        private void Window_Loaded(object sender,EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            Type controlType = typeof(Control);</span><br><span class="line">            List&lt;Type&gt; derivedTypes = new List&lt;Type&gt;();</span><br><span class="line">            //Search all the types in the assembly where the Control Class is defined.</span><br><span class="line">            Assembly assembly = Assembly.GetAssembly(typeof(Control));</span><br><span class="line">            foreach (Type type in assembly.GetTypes())</span><br><span class="line">            &#123;</span><br><span class="line">                if (type.IsSubclassOf(controlType) &amp;&amp; !type.IsAbstract &amp;&amp; type.IsPublic)</span><br><span class="line">                &#123;</span><br><span class="line">                    derivedTypes.Add(type);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            derivedTypes.Sort(new TypeComparer());</span><br><span class="line">            lstTypes.ItemsSource = derivedTypes;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void lstTypes_SelectionChanged(object sender,SelectionChangedEventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                Type type = (Type)lstTypes.SelectedItem;</span><br><span class="line">                ConstructorInfo info = type.GetConstructor(System.Type.EmptyTypes);</span><br><span class="line">                Control control = (Control)info.Invoke(null);</span><br><span class="line"></span><br><span class="line">                Window win = control as Window;</span><br><span class="line">                if (win !=null)</span><br><span class="line">                &#123;</span><br><span class="line">                    win.WindowState = WindowState.Minimized;</span><br><span class="line">                    win.ShowInTaskbar = false;</span><br><span class="line">                    win.Show();</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    control.Visibility = Visibility.Collapsed;</span><br><span class="line">                    grid.Children.Add(control);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ControlTemplate template = control.Template;</span><br><span class="line"></span><br><span class="line">                XmlWriterSettings settings = new XmlWriterSettings();</span><br><span class="line">                settings.Indent = true;</span><br><span class="line">                StringBuilder sb = new StringBuilder();</span><br><span class="line">                XmlWriter writer = XmlWriter.Create(sb, settings);</span><br><span class="line">                XamlWriter.Save(template, writer);</span><br><span class="line"></span><br><span class="line">                txtTemplate.Text = sb.ToString();</span><br><span class="line"></span><br><span class="line">                if (win!=null)</span><br><span class="line">                &#123;</span><br><span class="line">                    win.Close();</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    grid.Children.Remove(control);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            catch (Exception err)</span><br><span class="line">            &#123;</span><br><span class="line">                txtTemplate.Text = &quot;&lt;&lt; Error generation template: &quot; + err.Message + &quot;&gt;&gt;&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public class TypeComparer:IComparer&lt;Type&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            public int Compare(Type x,Type y)</span><br><span class="line">            &#123;</span><br><span class="line">                return x.Name.CompareTo(y.Name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建控件模板"><a href="#创建控件模板" class="headerlink" title="创建控件模板"></a>创建控件模板</h2><h3 id="简单按钮"><a href="#简单按钮" class="headerlink" title="简单按钮"></a>简单按钮</h3><p>基本框架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Window.Resources&gt;</span><br><span class="line">       &lt;ControlTemplate x:Key=&quot;ButtonTemplate&quot; TargetType=&quot;&#123;x:Type Button&#125;&quot;&gt;</span><br><span class="line">           &lt;Border BorderBrush=&quot;Orange&quot; BorderThickness=&quot;3&quot; CornerRadius=&quot;2&quot;</span><br><span class="line">                   Background=&quot;Red&quot; TextBlock.Foreground=&quot;White&quot;&gt;</span><br><span class="line">               &lt;ContentPresenter RecognizesAccessKey=&quot;True&quot;&gt;&lt;/ContentPresenter&gt;</span><br><span class="line">           &lt;/Border&gt;</span><br><span class="line">       &lt;/ControlTemplate&gt;</span><br><span class="line">   &lt;/Window.Resources&gt;</span><br><span class="line">   &lt;Grid&gt;</span><br><span class="line">       &lt;StackPanel Margin=&quot;5&quot;&gt;</span><br><span class="line">           &lt;Button Margin=&quot;10&quot; Padding=&quot;5&quot; Template=&quot;&#123;StaticResource ButtonTemplate&#125;&quot;&gt;A SImple Button&lt;/Button&gt;</span><br><span class="line">       &lt;/StackPanel&gt;</span><br><span class="line">   &lt;/Grid&gt;</span><br></pre></td></tr></table></figure>
+<p>其中，必须要有ContentPresenter.所有的内容控件都需要ContentPresenter元素，它是表示“在此插入内容的标记器”。</p>
+<h3 id="模板绑定"><a href="#模板绑定" class="headerlink" title="模板绑定"></a>模板绑定</h3><p>但是仅仅这样StackPanel忽略了Padding属性，通过使用模板绑定，模板可以从应用模板的控件中提取一个值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;ContentPresenter RecognizesAccessKey=&quot;True&quot;</span><br><span class="line">                                  Margin=&quot;&#123;TemplateBinding Padding&#125;&quot;&gt;&lt;/ContentPresenter&gt;</span><br></pre></td></tr></table></figure>
+<p>就可以得到期望的效果</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/learn-everyday/" rel="tag"># learn everyday</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/21/WPF-pro-4-5-Top/" rel="next" title="WPF pro 4.5 Top">
+                <i class="fa fa-chevron-left"></i> WPF pro 4.5 Top
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Psmyfish</p>
+              <p class="site-description motion-element" itemprop="description">Some fish in the rain,some fish in the sun.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控件模板"><span class="nav-number">1.</span> <span class="nav-text">控件模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解逻辑树和可视化树"><span class="nav-number">1.1.</span> <span class="nav-text">理解逻辑树和可视化树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解模板"><span class="nav-number">1.2.</span> <span class="nav-text">理解模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰类"><span class="nav-number">1.2.1.</span> <span class="nav-text">修饰类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剖析控件"><span class="nav-number">1.2.2.</span> <span class="nav-text">剖析控件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建控件模板"><span class="nav-number">1.3.</span> <span class="nav-text">创建控件模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单按钮"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板绑定"><span class="nav-number">1.3.2.</span> <span class="nav-text">模板绑定</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Psmyfish</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
