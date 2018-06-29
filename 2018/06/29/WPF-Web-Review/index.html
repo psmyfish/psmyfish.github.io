@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Fish, PP" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DotNew菜园的WPF入门教程系列回顾">
+<meta name="keywords" content="Nice body">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPF-Web-Review">
+<meta property="og:url" content="http://yoursite.com/2018/06/29/WPF-Web-Review/index.html">
+<meta property="og:site_name" content="Psmyfish">
+<meta property="og:description" content="DotNew菜园的WPF入门教程系列回顾">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images0.cnblogs.com/blog2015/10343/201507/151726172987221.png">
+<meta property="og:updated_time" content="2018-06-29T03:30:38.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WPF-Web-Review">
+<meta name="twitter:description" content="DotNew菜园的WPF入门教程系列回顾">
+<meta name="twitter:image" content="https://images0.cnblogs.com/blog2015/10343/201507/151726172987221.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/29/WPF-Web-Review/"/>
+
+
+
+
+
+  <title>WPF-Web-Review | Psmyfish</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/psmyfish" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Psmyfish</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">what is this fish?</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/WPF-Web-Review/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Psmyfish">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Psmyfish">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">WPF-Web-Review</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T10:56:50+08:00">
+                2018-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WPF/" itemprop="url" rel="index">
+                    <span itemprop="name">WPF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DotNew菜园的WPF入门教程系列回顾"><a href="#DotNew菜园的WPF入门教程系列回顾" class="headerlink" title="DotNew菜园的WPF入门教程系列回顾"></a>DotNew菜园的WPF入门教程系列回顾</h1><a id="more"></a>
+<p>Reference: <a href="http://www.cnblogs.com/chillsrc/p/4464023.html" target="_blank" rel="noopener">http://www.cnblogs.com/chillsrc/p/4464023.html</a></p>
+<h2 id="CH01-Basic"><a href="#CH01-Basic" class="headerlink" title="CH01 Basic"></a>CH01 Basic</h2><blockquote>
+<p>小结:</p>
+<p>都是基础中的基础，谈到WPF的开发，必须要学习MVVM，学习MVVM，就要首先了解MVC、MVP等概念。？</p>
+<p>.net的本质没变，数据库的访问，文件的读写、日志处理、程序中异常的处理、报表、打印、性能的优化….</p>
+</blockquote>
+<h2 id="CH02-Application"><a href="#CH02-Application" class="headerlink" title="CH02 Application"></a>CH02 Application</h2><p>WPF中常见的功能都封装在此类中，具体功能如下：</p>
+<ul>
+<li>跟踪应用程序的生存期并与之交互</li>
+<li>检索和处理命令行参数</li>
+<li>检测和响应未经处理的异常</li>
+<li>共享应用程序范围的属性和资源</li>
+<li>管理独立应用程序中的窗口</li>
+<li>跟踪和管理导航</li>
+</ul>
+<p>主要讲代码Main方法启动WPF应用程序</p>
+<p>自己新起一个App.cs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[STAThread]</span><br><span class="line">        public static void Main()</span><br><span class="line">        &#123;</span><br><span class="line">            Application app = new Application();</span><br><span class="line">            app.StartupUri = new Uri(&quot;MainWindow.xaml&quot;, UriKind.Relative);</span><br><span class="line">            app.Run();</span><br><span class="line">            //or</span><br><span class="line">            MainWindow mainWindow = new MainWindow();</span><br><span class="line">            app.Run(mainWindow);</span><br><span class="line">            //or</span><br><span class="line">            //app.MainWindow = mainWindow;</span><br><span class="line">            //mainWindow.Show();</span><br><span class="line">            //app.Run();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CH03-Application-01"><a href="#CH03-Application-01" class="headerlink" title="CH03 Application_01"></a>CH03 Application_01</h2><h3 id="WPF-Shutdown"><a href="#WPF-Shutdown" class="headerlink" title="WPF Shutdown"></a>WPF Shutdown</h3><p>ShutdownMode   Properties: </p>
+<p>OnLastWindowClosse  OnMainWindowClose  OnExplicitShutDown</p>
+<p>Can modify it in App.xaml  or  in Background code</p>
+<h3 id="Application-对象的其他属性"><a href="#Application-对象的其他属性" class="headerlink" title="Application 对象的其他属性"></a>Application 对象的其他属性</h3><p>Current    Dispatcher    MainWindow    Properties    ResourceAssembly   Resources    ShutdownMode    StartupUri   Windows</p>
+<h3 id="添加Application对象事件"><a href="#添加Application对象事件" class="headerlink" title="添加Application对象事件"></a>添加Application对象事件</h3><p>Activated  Deactivated  DispatcherUnhandleException Exit  FragmentNavigation  LoadCompleted  Navigated   Navigating  NavigationFailed  NavigationProgress NavigationStopped  SessionEnding  Startup</p>
+<h1 id="CH04"><a href="#CH04" class="headerlink" title="CH04"></a>CH04</h1><hr>
+<blockquote>
+<p>Like Unity,从子线程中不能直接更新UI，Unity-&gt;用Loom可以办到，WPF采用Dispatcher.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private void ModifyUI()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	Thread.Sleep(TimeSpan.FromSeconds(2));</span><br><span class="line"></span><br><span class="line">	this.Dispathcer.Invoke(DispatcherPriority.Normal,(ThreadStart)delegate()</span><br><span class="line"></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		label.Content = &quot;Welcome&quot;;</span><br><span class="line"></span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>另外一种方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private void btnAppBeginInvoke_Click(object sender, RoutedEventArgs e)</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">    	new Thread(() =&gt;</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,</span><br><span class="line"></span><br><span class="line">                new Action(() =&gt;</span><br><span class="line"></span><br><span class="line">                &#123;</span><br><span class="line"></span><br><span class="line">                    Thread.Sleep(TimeSpan.FromSeconds(2));</span><br><span class="line"></span><br><span class="line">                    this.lblHello.Content = &quot;欢迎你光临WPF的世界,Dispatche 异步方法！！&quot;+ 	                             DateTime.Now.ToString();</span><br><span class="line"></span><br><span class="line">                &#125;));</span><br><span class="line"></span><br><span class="line">        &#125;).Start();	</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="CH05"><a href="#CH05" class="headerlink" title="CH05"></a>CH05</h1><p>第一次打开窗口时，只有在引发了Activated事件以后，才会引发Loaded和ContentRendered事件。</p>
+<p>窗口的生命周期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public MainWindow()</span><br><span class="line">        &#123;</span><br><span class="line">            this.Activated += WindowThd_Activated;</span><br><span class="line">            this.Closing += WindowThd_Closing;</span><br><span class="line">            this.ContentRendered += WindowThd_ContentRendered;</span><br><span class="line">            this.Deactivated += WindowThd_Deactivated;</span><br><span class="line">            this.Loaded += WindowThd_Loaded;</span><br><span class="line">            this.Closed += WindowThd_Closed;</span><br><span class="line">            this.Unloaded += WindowThd_Unloaded;</span><br><span class="line">            this.SourceInitialized += WindowThd_SourceInitialized;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1–SourceInitialized  2–Activated 3–Loaded 4–ContentRendered 5–Deactivated</p>
+</blockquote>
+<blockquote>
+<p>1–Closing 2–Deactivated 3–Closed 4–Unloaded</p>
+</blockquote>
+<h1 id="CH06"><a href="#CH06" class="headerlink" title="CH06"></a>CH06</h1><p>Canvas 实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Ellipse el = new Ellipse();</span><br><span class="line">            el.Fill = new SolidColorBrush(Colors.Blue);</span><br><span class="line">            el.Stroke = new SolidColorBrush(Colors.Blue);</span><br><span class="line">            el.Width = 240;</span><br><span class="line">            el.Height = 80;</span><br><span class="line">            el.SetValue(Canvas.ZIndexProperty, 1);</span><br><span class="line">            el.SetValue(Canvas.LeftProperty, (double)100);</span><br><span class="line">            el.SetValue(Canvas.TopProperty, (double)80);</span><br><span class="line">            canv.Children.Add(el);</span><br></pre></td></tr></table></figure>
+<h1 id="Ch07"><a href="#Ch07" class="headerlink" title="Ch07"></a>Ch07</h1><p>WarpPanel 排列？</p>
+<p>StackPanel 填充排列</p>
+<h1 id="CH08"><a href="#CH08" class="headerlink" title="CH08"></a>CH08</h1><h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><p>To use it, first to Add RowDefinitions &amp; ColumnDefinitions</p>
+<h1 id="Ch09"><a href="#Ch09" class="headerlink" title="Ch09"></a>Ch09</h1><p>DockPanel </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Window</span> <span class="attr">x:Class</span>=<span class="string">"WpfApp1.WindowDock"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:x</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">Title</span>=<span class="string">"WindowDock"</span> <span class="attr">Height</span>=<span class="string">"300"</span> <span class="attr">Width</span>=<span class="string">"400"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DockPanel</span> <span class="attr">Width</span>=<span class="string">"Auto"</span> <span class="attr">Height</span>=<span class="string">"Auto"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">DockPanel.Dock</span>=<span class="string">"Left"</span> <span class="attr">Content</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">DockPanel.Dock</span>=<span class="string">"Top"</span> <span class="attr">Content</span>=<span class="string">"2"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">DockPanel.Dock</span>=<span class="string">"Right"</span> <span class="attr">Content</span>=<span class="string">"3"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span> <span class="attr">DockPanel.Dock</span>=<span class="string">"Bottom"</span> <span class="attr">Content</span>=<span class="string">"4"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Button</span>  <span class="attr">HorizontalAlignment</span>=<span class="string">"Left"</span>  <span class="attr">Name</span>=<span class="string">"btnAddByCode"</span> <span class="attr">Height</span>=<span class="string">"22"</span> <span class="attr">Width</span>=<span class="string">"65"</span> <span class="attr">DockPanel.Dock</span>=<span class="string">" Left "</span>  <span class="attr">Click</span>=<span class="string">"btnAddByCode_Click"</span> &gt;</span>后台代码添加<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">DockPanel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Window</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Viewbox </p>
+<p>StretchDirection  </p>
+<p>Stretch</p>
+<table>
+<thead>
+<tr>
+<th>None</th>
+<th>内容保持原样</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fill</td>
+<td>填充</td>
+</tr>
+<tr>
+<td>Uniform</td>
+<td>适合目标尺寸\</td>
+<td></td>
+</tr>
+<tr>
+<td>UniformToFill</td>
+<td>裁剪</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>UpOnly</th>
+<th>?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DownOnly</td>
+<td></td>
+</tr>
+<tr>
+<td>Both</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Ch10"><a href="#Ch10" class="headerlink" title="Ch10"></a>Ch10</h1><p><strong>Border</strong></p>
+<p>只有一个子控件，如果要多个，就加个Panel</p>
+<p>Attributes</p>
+<ul>
+<li>Background</li>
+<li>BorderBrush</li>
+<li>BorderThickness</li>
+<li>CornerRadius</li>
+<li>Paddding</li>
+</ul>
+<p><strong>ScrollViwer</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ScrollViewer</span> <span class="attr">Name</span>=<span class="string">"scroll"</span> <span class="attr">Width</span>=<span class="string">"480"</span>  <span class="attr">Height</span>=<span class="string">"350"</span> <span class="attr">HorizontalScrollBarVisibility</span>=<span class="string">"Auto"</span> <span class="attr">VerticalScrollBarVisibility</span>=<span class="string">"Visible"</span> &gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextBlock</span>    <span class="attr">Name</span>=<span class="string">"txtShowArticle"</span>   <span class="attr">Foreground</span>=<span class="string">"Gray"</span> <span class="attr">Margin</span>=<span class="string">"20,10"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ScrollViewer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="ch11"><a href="#ch11" class="headerlink" title="ch11"></a>ch11</h1><h3 id="依赖属性基本介绍"><a href="#依赖属性基本介绍" class="headerlink" title="依赖属性基本介绍"></a>依赖属性基本介绍</h3><p>Aim: To Solve Style ,Binding,Animation.</p>
+<p>Attributes: The Binding Attributes is that it Can have no value And get value from Binding Data Source.</p>
+<p>Usage:</p>
+<ul>
+<li><p>Double Oriention Binding</p>
+</li>
+<li><p>Trigger</p>
+</li>
+<li><p>Append Attribute</p>
+</li>
+<li><p>Attribute Change Binding</p>
+</li>
+</ul>
+<p>  <strong>Advantage</strong></p>
+<ul>
+<li>New function</li>
+<li>Save Ram</li>
+<li>Support Multiple Object</li>
+</ul>
+<p>Then How to Use：</p>
+<ul>
+<li><p>heir your class from <strong>DependencyObject</strong></p>
+</li>
+<li><p>The Defination of Attribute must use public static of DependencyProperty and the value has the Property to append</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static readonly DependencyProperty NameProperty;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>How to register</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameProperty = DependencyProperty.Register(&quot;Name&quot;,typeof(string),typeof(Student),new PropertyMatadata(&quot;名称&quot;,OnValueChanged));</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Sealing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public string Name</span><br><span class="line">&#123;</span><br><span class="line">    get&#123;return(string)GetValue(nameProperty);&#125;</span><br><span class="line">    set&#123;SetValue(NameProperty,value);&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Then We can Write:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Student: DependencyObject</span><br><span class="line">&#123;</span><br><span class="line">	//got a static readonly DependencyProperty</span><br><span class="line">	public static readonly DependencyProperty NameProperty;</span><br><span class="line">	static Student()</span><br><span class="line">    &#123;</span><br><span class="line">    	//register our Arribute Name</span><br><span class="line">    	NameProperty = DependencyProperty.Register(&quot;Name&quot;,typeof(string),</span><br><span class="line">    	typeof(Student),new PropertyMetadata(&quot;名称&quot;,OnValueChanged));</span><br><span class="line">    &#125;</span><br><span class="line">    private static void OnValueChanged(DependencyObject o,DependencyPropertyChangeEventArgs e)</span><br><span class="line">    &#123;</span><br><span class="line">    	//when value change</span><br><span class="line">    &#125;</span><br><span class="line">    //sealing Attributes</span><br><span class="line">    public string Name</span><br><span class="line">    &#123;</span><br><span class="line">    	get&#123;return (string)GetValue(NameProperty);&#125;</span><br><span class="line">    	set&#123;SetValue(NameProperty,value);&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   Conclusions</p>
+<p>The Binding Attribute Calls the GetValue() SetValue() which is heired form the DependencyProperty,which is a IDictionary, Key is the HashCode  and the Value is The Dependency Property we registered.</p>
+<h1 id="CH12"><a href="#CH12" class="headerlink" title="CH12"></a>CH12</h1><p><img src="https://images0.cnblogs.com/blog2015/10343/201507/151726172987221.png" alt="img"> </p>
+<h1 id="Ch13"><a href="#Ch13" class="headerlink" title="Ch13"></a>Ch13</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    InitializeComponent();</span><br><span class="line">    DispatcherTimer timer = new DispatcherTimer(TimeSpan.FromSeconds(1),</span><br><span class="line">                        DispatcherPriority.Normal,</span><br><span class="line">                        (object sender, EventArgs e) =&gt;</span><br><span class="line">                        &#123;</span><br><span class="line">                            int newValue = Counter == int.MaxValue ? 0 : Counter + 1;</span><br><span class="line">                            SetValue(counterKey, newValue);</span><br><span class="line">                        &#125;, Dispatcher</span><br><span class="line">        );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int Counter</span><br><span class="line">&#123;</span><br><span class="line">    get &#123; return (int)GetValue(counterKey.DependencyProperty); &#125;</span><br><span class="line">&#125;</span><br><span class="line">private static readonly DependencyPropertyKey counterKey =</span><br><span class="line">    DependencyProperty.RegisterReadOnly(&quot;Counter&quot;,</span><br><span class="line">            typeof(int), typeof(MainWindow), new PropertyMetadata(0));</span><br></pre></td></tr></table></figure>
+<p>Append Attributes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class TurnoverManager : DependencyObject</span><br><span class="line">    &#123;</span><br><span class="line">        //通过静态方法的形式暴露读的操作</span><br><span class="line">        public static double GetAngle(DependencyObject obj)</span><br><span class="line">        &#123;</span><br><span class="line">            return (double)obj.GetValue(AngleProperty);</span><br><span class="line">        &#125;</span><br><span class="line">        public static void SetAngle(DependencyObject obj,double value)</span><br><span class="line">        &#123;</span><br><span class="line">            obj.SetValue(AngleProperty, value);</span><br><span class="line">        &#125;</span><br><span class="line">        public static readonly DependencyProperty AngleProperty =</span><br><span class="line">            DependencyProperty.RegisterAttached(&quot;Angle&quot;, typeof(double), typeof(TurnoverManager), new PropertyMetadata(0.0, OnAngleChanged));</span><br><span class="line">        private static void OnAngleChanged(DependencyObject obj,DependencyPropertyChangedEventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            var element = obj as UIElement;</span><br><span class="line">            if (element!=null)</span><br><span class="line">            &#123;</span><br><span class="line">                element.RenderTransformOrigin = new Point(0.5, 0.5);</span><br><span class="line">                element.RenderTransform = new RotateTransform((double)e.NewValue);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>How to Use</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Grid.RowDefinitions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"313*"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"57*"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Grid.RowDefinitions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Canvas</span> <span class="attr">Grid.Row</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Ellipse</span> <span class="attr">Name</span>=<span class="string">"ellipseRed"</span> <span class="attr">Fill</span>=<span class="string">"Red"</span> <span class="attr">Width</span>=<span class="string">"100"</span> <span class="attr">Height</span>=<span class="string">"60"</span> <span class="attr">Canvas.Left</span>=<span class="string">"56"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">Canvas.Top</span>=<span class="string">"98"</span> <span class="attr">local:TurnoverManager.Angle</span>=<span class="string">"&#123;Binding ElementName=sliderAngle,Path=Value&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Rectangle</span> <span class="attr">Name</span>=<span class="string">"rectBlue"</span> <span class="attr">Fill</span>=<span class="string">"Blue"</span> <span class="attr">Width</span>=<span class="string">"100"</span> <span class="attr">Height</span>=<span class="string">"80"</span> <span class="attr">Canvas.Left</span>=<span class="string">"285"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">Canvas.Top</span>=<span class="string">"171"</span> <span class="attr">local:TurnoverManager.Angle</span>=<span class="string">"45"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Name</span>=<span class="string">"btnWelcome"</span> <span class="attr">Content</span>=<span class="string">"Welcome"</span> <span class="attr">Canvas.Left</span>=<span class="string">"265"</span> <span class="attr">Canvas.Top</span>=<span class="string">"48"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">FontSize</span>=<span class="string">"20"</span> <span class="attr">local:TurnoverManager.Angle</span>=<span class="string">"60"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">WrapPanel</span> <span class="attr">Grid.Row</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Label</span> <span class="attr">Content</span>=<span class="string">"Angle rate"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Slider</span> <span class="attr">x:Name</span>=<span class="string">"sliderAngle"</span> <span class="attr">Minimum</span>=<span class="string">"0"</span> <span class="attr">Maximum</span>=<span class="string">"240"</span> <span class="attr">Width</span>=<span class="string">"300"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">WrapPanel</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个貌似需要生成。</p>
+<h1 id="CH14"><a href="#CH14" class="headerlink" title="CH14"></a>CH14</h1><p>没看懂</p>
+<h1 id="CH15"><a href="#CH15" class="headerlink" title="CH15"></a>CH15</h1><p>What is Data Binding?</p>
+<p>The target U want to bind is  any Attribute &amp; Component that Inheir from DependencyProperty。</p>
+<p>Attributes</p>
+<p>Mode：</p>
+<ul>
+<li>Default</li>
+<li>OneTime</li>
+<li>OneWay</li>
+<li>OneWayToSource</li>
+<li>TwoWay</li>
+</ul>
+<p>UpdateSourceTrigger:</p>
+<ul>
+<li>Default</li>
+<li>Explicit</li>
+<li>LostFocus</li>
+<li>PropertyChanged</li>
+</ul>
+<p>Easy Example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextBlock Width=&quot;248&quot; Height=&quot;24&quot; Text=&quot;&#123;Binding ElementName=listStockName, Path=SelectedItem.Content&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="CH16"><a href="#CH16" class="headerlink" title="CH16"></a>CH16</h1><p>   绑定模式如何应用呢？下面是个人的一点见解：</p>
+<p>​    1）当只想让用户看到数据，而不希望用户去修改数据时，可以采用 OneWay 模式，类似winform中的只读属性。</p>
+<p>​    2）当希望用户可以对控件中的数据进行修改，同时让用户修改的数据更新到数据源（DataSet、对象、XML 或其他绑定控件）中时，可以使用 TwoWay 绑定。</p>
+<p>​    3）如果想让用户修改数据源中的数据，而又不想使用TowWay模式，就可以使用 OneWayToSource 绑定。OneWayToSource模式允许通过在原来被看作是绑定源的对象中放置绑定表达式，从而翻转源和目标。</p>
+<p>​    4）当你的界面中的一系列只读控件均被绑定了数据，并且当用户刷新了数据源时，希望绑定控件中的值仍保持不变，可以使用 OneTime 绑定。此外，当源没有实现 INotifyPropertyChanged 时，OneTime 绑定模式也是一个不错的选择。</p>
+<p><strong>说明：绑定目标中的修改何时去修改数据源</strong></p>
+<p>​     在上面的例子中，TextBox 使用了 TwoWay 绑定模式，所以当TextBox 失去焦点时WPF会使用TextBox中的值改变ListBox中的值。如果你不想在TextBox失去焦点时，就去修改ListBox中的值，可以为 UpdateSourceTrigger 指定值，它是用于定义何时更新源的绑定属性。可以为 UpdateSourceTrigger 设置三个值：Explicit、LostFocus 和 PropertyChanged。</p>
+<p>​    如果将 UpdateSourceTrigger 设置为 Explicit，则不会更新源，除非从代码中调用 BindingExpression.UpdateSource 方法。设置为LostFocus ，（TextBox 控件的默认值）指示数据源绑定的控件失去焦点时才会更新。PropertyChanged 值绑定控件的绑定属性每次发生更改时就去更新数据源中的值。</p>
+<h1 id="CH17"><a href="#CH17" class="headerlink" title="CH17"></a>CH17</h1><p>XML Data Binding</p>
+<p>XmlDataProvider  need a x:Key</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Grid</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">StackPanel.Resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">XmlDataProvider</span> <span class="attr">x:Key</span>=<span class="string">"MyColors"</span> <span class="attr">Source</span>=<span class="string">"Colors.xml"</span> <span class="attr">XPath</span>=<span class="string">"colors"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">XmlDataProvider</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">StackPanel.Resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Width</span>=<span class="string">"258"</span> <span class="attr">Height</span>=<span class="string">"24"</span> <span class="attr">Text</span>=<span class="string">"XML DataBind:"</span> <span class="attr">TextWrapping</span>=<span class="string">"Wrap"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ListBox</span> <span class="attr">x:Name</span>=<span class="string">"listXmlColor"</span> <span class="attr">Width</span>=<span class="string">"248"</span> <span class="attr">Height</span>=<span class="string">"56"</span> <span class="attr">IsSynchronizedWithCurrentItem</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">ItemsSource</span>=<span class="string">"&#123;Binding Source=&#123;StaticResource MyColors&#125;,XPath=color/@name&#125;"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Width</span>=<span class="string">"248"</span> <span class="attr">Height</span>=<span class="string">"24"</span> <span class="attr">Text</span>=<span class="string">"Choose:"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Width</span>=<span class="string">"248"</span> <span class="attr">Height</span>=<span class="string">"24"</span> <span class="attr">Text</span>=<span class="string">"&#123;Binding ElementName=listXmlColor,Path=SelectedValue,Mode=OneWay&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">colors</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Pink"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Red"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Purple"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Cyan"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Gray"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"Turquoise"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">colors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>ObjectDataProvider </p>
+<p>Attributes</p>
+<ul>
+<li>ConstructionParameters</li>
+<li>MethodParameters</li>
+<li>ObjectInstance</li>
+<li>IsAsynchronous</li>
+</ul>
+<p>通用数据模板 DataTemplate</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;Grid&gt;</span><br><span class="line">        &lt;StackPanel&gt;</span><br><span class="line">            &lt;StackPanel.Resources&gt;</span><br><span class="line">                &lt;ObjectDataProvider x:Key=<span class="string">"students"</span> ObjectType=<span class="string">"&#123;x:Type local:StudentService&#125;"</span> MethodName=<span class="string">"GetStudentList"</span>/&gt;</span><br><span class="line">                &lt;DataTemplate x:Key=<span class="string">"studentLayout"</span> DataType=<span class="string">"students"</span>&gt;</span><br><span class="line">                    &lt;StackPanel Orientation=<span class="string">"Horizontal"</span>&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">"&#123;Binding Path=Name&#125;"</span> FontWeight=<span class="string">"Bold"</span> Foreground=<span class="string">"Blue"</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">","</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">"&#123;Binding Path=Age&#125;"</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">","</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">"&#123;Binding Path=Birthday&#125;"</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">","</span>/&gt;</span><br><span class="line">                        &lt;TextBlock Text=<span class="string">"&#123;Binding Path=Country&#125;"</span>/&gt;</span><br><span class="line">                    &lt;/StackPanel&gt;</span><br><span class="line">                &lt;/DataTemplate&gt;</span><br><span class="line">            &lt;/StackPanel.Resources&gt;</span><br><span class="line">            &lt;TextBlock Width=<span class="string">"248"</span> Height=<span class="string">"24"</span> Text=<span class="string">"Object Data Bind:"</span> TextWrapping=<span class="string">"Wrap"</span>/&gt;</span><br><span class="line">            &lt;ListBox x:Name=<span class="string">"listObjectBind"</span> Width=<span class="string">"450"</span> Height=<span class="string">"100"</span> IsSynchronizedWithCurrentItem=<span class="string">"True"</span></span><br><span class="line">                     ItemsSource=<span class="string">"&#123;Binding Source=&#123;StaticResource students&#125;&#125;"</span></span><br><span class="line">                     ItemTemplate=<span class="string">"&#123;DynamicResource studentLayout&#125;"</span>/&gt;</span><br><span class="line">        &lt;/StackPanel&gt;</span><br><span class="line">    &lt;/Grid&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="Ch18"><a href="#Ch18" class="headerlink" title="Ch18"></a>Ch18</h1><p>对数据排序</p>
+<p>binding to CollectionViewSource</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CollectionViewSource</span> <span class="attr">x:Key</span>=<span class="string">"studentsView"</span> <span class="attr">Source</span>=<span class="string">"&#123;Binding Source=&#123;StaticResource students&#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CollectionViewSource.SortDescriptions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scm:SortDescription</span> <span class="attr">PropertyName</span>=<span class="string">"Name"</span> <span class="attr">Direction</span>=<span class="string">"Ascending"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scm:SortDescription</span> <span class="attr">PropertyName</span>=<span class="string">"Age"</span> <span class="attr">Direction</span>=<span class="string">"Descending"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">CollectionViewSource.SortDescriptions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CollectionViewSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Ch19"><a href="#Ch19" class="headerlink" title="Ch19"></a>Ch19</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/23/DeepInWPF/" rel="next" title="DeepInWPF">
+                <i class="fa fa-chevron-left"></i> DeepInWPF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Psmyfish</p>
+              <p class="site-description motion-element" itemprop="description">Some fish in the rain,some fish in the sun.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DotNew菜园的WPF入门教程系列回顾"><span class="nav-number">1.</span> <span class="nav-text">DotNew菜园的WPF入门教程系列回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CH01-Basic"><span class="nav-number">1.1.</span> <span class="nav-text">CH01 Basic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CH02-Application"><span class="nav-number">1.2.</span> <span class="nav-text">CH02 Application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CH03-Application-01"><span class="nav-number">1.3.</span> <span class="nav-text">CH03 Application_01</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WPF-Shutdown"><span class="nav-number">1.3.1.</span> <span class="nav-text">WPF Shutdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-对象的其他属性"><span class="nav-number">1.3.2.</span> <span class="nav-text">Application 对象的其他属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加Application对象事件"><span class="nav-number">1.3.3.</span> <span class="nav-text">添加Application对象事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH04"><span class="nav-number">2.</span> <span class="nav-text">CH04</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH05"><span class="nav-number">3.</span> <span class="nav-text">CH05</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH06"><span class="nav-number">4.</span> <span class="nav-text">CH06</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch07"><span class="nav-number">5.</span> <span class="nav-text">Ch07</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH08"><span class="nav-number">6.</span> <span class="nav-text">CH08</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid"><span class="nav-number">6.1.</span> <span class="nav-text">Grid</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch09"><span class="nav-number">7.</span> <span class="nav-text">Ch09</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch10"><span class="nav-number">8.</span> <span class="nav-text">Ch10</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ch11"><span class="nav-number">9.</span> <span class="nav-text">ch11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖属性基本介绍"><span class="nav-number">9.0.1.</span> <span class="nav-text">依赖属性基本介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH12"><span class="nav-number">10.</span> <span class="nav-text">CH12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch13"><span class="nav-number">11.</span> <span class="nav-text">Ch13</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH14"><span class="nav-number">12.</span> <span class="nav-text">CH14</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH15"><span class="nav-number">13.</span> <span class="nav-text">CH15</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH16"><span class="nav-number">14.</span> <span class="nav-text">CH16</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CH17"><span class="nav-number">15.</span> <span class="nav-text">CH17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch18"><span class="nav-number">16.</span> <span class="nav-text">Ch18</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ch19"><span class="nav-number">17.</span> <span class="nav-text">Ch19</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Psmyfish</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
